@@ -14,25 +14,34 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "mysql_db",
+    "public": false
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "mysql_db",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "mysql_db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "mysql_db",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "mysql_db",
     "public": false
+  },
+  "News": {
+    "dataSource": "mysql_db",
+    "public": true
+  },
+  "Account": {
+    "dataSource": "mysql_db",
+    "public": true
   }
 }
