@@ -1,0 +1,1 @@
+{"title":"Test","description":"Desc T","logo":"ZEvent-logo.png","primaryColor":"#000000","donation":"","facebook":"","twitter":"","instagram":"","youtube":""}
