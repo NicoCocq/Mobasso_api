@@ -17,18 +17,19 @@
     },
     "publish_date": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "created_date": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "updated_date": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "image": {
-      "type": "string"
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],
