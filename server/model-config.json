@@ -43,5 +43,9 @@
   "Account": {
     "dataSource": "mysql_db",
     "public": true
+  },
+  "Container": {
+    "dataSource": "files",
+    "public": true
   }
 }

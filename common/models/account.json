@@ -10,6 +10,14 @@
     "association_name": {
       "type": "string",
       "required": true
+    },
+    "realm": {
+      "type": "string",
+      "required": false
+    },
+    "username": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],
