@@ -10,7 +10,7 @@ module.exports = function(app) {
   });*/
 
   formConfigRouter.get('/test', function(req, res) {
-    register();
+    login();
     res.render('ok.pug');
   });
 
@@ -85,22 +85,37 @@ function register() {
 
 
 function login() {
+  var request = require('request');
+  /*
   const email = req.body.email;
-  const password = req.body.pass;
+  const password = req.body.pass;*/
+  const email = "lcr@gmail.com";
+  const password = "a";
 
   if( email === undefined || password === undefined ) {
-    res.status(400).end();
+    //res.status(400).end();
+    console.log("Error, values are not conform.");
     return;
   }
 
-  var formData = {
-    email: email,
-    password: password
+
+  var options = {
+    uri: "http://localhost:3000/api/accounts/login",
+    method: 'POST',
+    json: {
+      email: email,
+      password: password
+    }
   };
 
-  request.get({url: "http://localhost:3000/api/account/login", formData: formData}, function callback(response) {
-    if( response.statusCode === 200 ) {
-      // C'est ok redirect
+  request(options, function(err, httpResponse, body) {
+    if( err || httpResponse.statusCode !== 200 ) {
+      //res.status(400).end();
+      return console.log("User does not exist.");
     }
+
+    console.log("Logged !");
+    // Add global variable (https://stackoverflow.com/questions/40755622/how-to-use-session-variable-with-nodejs)
   });
 }
+
