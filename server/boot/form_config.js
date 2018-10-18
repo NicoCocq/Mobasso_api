@@ -2,7 +2,9 @@ module.exports = function(app){
   var formConfigRouter = app.loopback.Router();
   var fs = require('fs');
   var multer = require('multer');
-  var upload = multer({ dest: 'uploads/' })
+  var upload = multer({ dest: 'uploads/' });
+  var express = require('express');
+  app.use(express.static('public'));
 
   //Get Form For Config App
   formConfigRouter.get('/', function (req, res) {
