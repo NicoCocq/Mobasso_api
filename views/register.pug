@@ -19,43 +19,16 @@ html(lang='en')
     link(rel='stylesheet', type='text/css', href='style/form/css/util.css')
     link(rel='stylesheet', type='text/css', href='style/form/css/main.css')
   body#page-top
-    // Navigation
-    nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
-      .container
-        a.navbar-brand.js-scroll-trigger(href='/') Mobasso
-        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-          span.navbar-toggler-icon
-        #navbarResponsive.collapse.navbar-collapse
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#presentation') Presentation
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#login') Connexion
-    header.masthead.text-center.text-white.d-flex
-      .container.my-auto
-        .row
-          .col-lg-10.mx-auto
-            h2.text-uppercase
-              strong Obtenez une application pour votre association facilement
-            hr
-          .col-lg-8.mx-auto
-            p.text-faded.mb-5
-            a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#login') Commencez
-    section#presentation.bg-primary
-      .container
-        .row
-          .col-lg-8.mx-auto.text-center
-            h2.section-heading.text-white We've got what you need!
-            hr.light.my-4
-            p.text-faded.mb-4
-              | Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!
     section#login.container-login100
       .wrap-login100
-        form.login100-form.validate-form(method='post', action='/')
+        form.login100-form.validate-form(method='post' action='/register')
           span.login100-form-title.p-b-26
-            | Connexion
+            | Inscription
           span.login100-form-title.p-b-48
             i.zmdi.zmdi-font
+          .wrap-input100
+            input.input100(type='text', name='associationName')
+            span.focus-input100(data-placeholder="Nom de l'association")
           .wrap-input100.validate-input(data-validate='Valid email is: a@b.c')
             input.input100(type='text', name='email')
             span.focus-input100(data-placeholder='E-mail')
@@ -64,16 +37,16 @@ html(lang='en')
               i.zmdi.zmdi-eye
             input.input100(type='password', name='pass')
             span.focus-input100(data-placeholder='Mot de passe')
+          .wrap-input100.validate-input(data-validate='Confirm password')
+            span.btn-show-pass
+              i.zmdi.zmdi-eye
+            input.input100(type='password', name='pass2')
+            span.focus-input100(data-placeholder='Mot de passe (confirmation)')
           .container-login100-form-btn
             .wrap-login100-form-btn
               .login100-form-bgbtn
-              button.login100-form-btn(type='submit')
+              button.login100-form-btn
                 | Connexion
-          .text-center.p-t-115
-            span.txt1
-              | Vous n'avez pas de compte ?
-            a.txt2(href='/register')
-              | Inscrivez-vous
     // Bootstrap core JavaScript
     script(src='style/vendor/jquery/jquery.min.js')
     script(src='style/vendor/bootstrap/js/bootstrap.bundle.min.js')

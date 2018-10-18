@@ -6,13 +6,37 @@ module.exports = function(app){
   var express = require('express');
   app.use(express.static('public'));
 
-  //Get Form For Config App
+  //Go To Index/Login Page
   formConfigRouter.get('/', function (req, res) {
+    res.render('index.pug');
+  })
+
+  //Logging Function
+  formConfigRouter.post('/', function (req, res) {
+    //TODO logging if ok form if nok index
+    console.log("Test Logging");
+    res.render('form_config.pug');
+  })
+
+  //Go To Register Page
+  formConfigRouter.get('/register', function (req, res) {
+    res.render('register.pug');
+  })
+
+  //Registing function
+  formConfigRouter.post('/register', function(req, res) {
+    //TODO Registing if ok form if nok index
+    console.log("Test Registing");
+    res.render('form_config.pug');
+  })
+
+  //Get Form For Config App
+  formConfigRouter.get('/formConfig', function (req, res) {
     res.render('form_config.pug');
   })
 
   //Add Configs in APK
-  formConfigRouter.post('/', upload.single('logo'), function(req, res, next) {
+  formConfigRouter.post('/formConfig', upload.single('logo'), function(req, res, next) {
     const file = req.file;
     const title = req.body.title;
     const description = req.body.description;
@@ -32,7 +56,7 @@ module.exports = function(app){
     fs.renameSync(file.path, filename);
 
     var infos = JSON.stringify(req.body);
-    apkConfigFile = "apk_config.txt";
+    var apkConfigFile = "apk_config.txt";
     fs.writeFileSync(apkConfigFile, infos, function(err) {
       if(err) {
         throw err;

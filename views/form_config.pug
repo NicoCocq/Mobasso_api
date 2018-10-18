@@ -25,28 +25,12 @@ html(lang='en')
         a.navbar-brand.js-scroll-trigger(href='#page-top') Mobasso
         button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
           span.navbar-toggler-icon
-        #navbarResponsive.collapse.navbar-collapse
-          ul.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#presentation') Presentation
-            li.nav-item
-              a.nav-link.js-scroll-trigger(href='#login') Login
-    header.masthead.text-center.text-white.d-flex
-      .container.my-auto
-        .row
-          .col-lg-10.mx-auto
-            h2.text-uppercase
-              strong Obtenez une application pour votre association facilement
-            hr
-          .col-lg-8.mx-auto
-            p.text-faded.mb-5
-            a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#login') Commencez
     section.container-login100
       .wrap-login100
-        form.login100-form.validate-form(method='POST' action='/' enctype='multipart/form-data')
+        form.login100-form.validate-form(method='POST' action='/formConfig' enctype='multipart/form-data')
           .wrap-input100
             label(for='title') Association name
-            input#title.input100(type='text', placeholder="Type the name of your association...", name='title')
+            input#title.form-control(type='text', placeholder="Type the name of your association...", name='title')
           .wrap-input100
             label(for='description') Description
             textarea#description.form-control(type='textarea', placeholder="Type the description of your association...", name='description')
@@ -55,7 +39,7 @@ html(lang='en')
             input#logo.form-control(type='file' name='logo' accept="image/*")
           .form-group
             label(for='primaryColor') Primary Color :
-            input#primaryColor.form-control.col-3(type='color', name='primaryColor')
+            input#primaryColor.form-control.col-3(type='color', name='primaryColor' value='#E8D8CC')
           .wrap-input100
             label(for='donation') Donation Link :
             input#donation.form-control(type='url', placeholder="Type the donation link of your association...", name='donation')
