@@ -1,8 +1,8 @@
-module.exports = function(app){
+module.exports = function(app) {
   var formConfigRouter = app.loopback.Router();
   var fs = require('fs');
   var multer = require('multer');
-  var upload = multer({ dest: 'uploads/' });
+  var upload = multer({dest: 'uploads/'});
   var express = require('express');
   app.use(express.static('public'));
 
@@ -16,7 +16,7 @@ module.exports = function(app){
     //TODO logging if ok form if nok index
     console.log("Test Logging");
     res.render('form_config.pug');
-  })
+  });
 
   //Go To Register Page
   formConfigRouter.get('/register', function (req, res) {
@@ -47,7 +47,8 @@ module.exports = function(app){
     const instagram = req.body.instagram;
     const youtube = req.body.youtube;
 
-    if(title === undefined || description === undefined || file === undefined || primaryColor === undefined) {
+    if (title === undefined || description === undefined ||
+      file === undefined || primaryColor === undefined) {
       res.status(400).end();
       return;
     }
@@ -58,47 +59,45 @@ module.exports = function(app){
     var infos = JSON.stringify(req.body);
     var apkConfigFile = "apk_config.txt";
     fs.writeFileSync(apkConfigFile, infos, function(err) {
-      if(err) {
+      if (err) {
         throw err;
       }
     });
 
     uploadFile(filename, file.mimeType);
-    uploadFile(apkConfigFile, "text/plain");
+    uploadFile(apkConfigFile, 'text/plain');
 
     res.render('ok.pug');
-
   });
 
   app.use(formConfigRouter);
+};
+
+function uploadFile(file, contentType) {
+  var request = require('request');
+  var path = require('path');
+  var fs = require('fs');
+
+  var filename = path.basename(file);
+
+  var target = 'http://10.33.2.244:3000/api/containers/test/upload'; // TODO remplacer `test` par id assos en var global
+
+  var formData = {
+    custom_file: {
+      value: fs.createReadStream(file),
+      options: {
+        filename: filename,
+        contentType: contentType
+      }
+    }
+  };
+
+  request.post({url: target, formData: formData}, function optionalCallback(err, httpResponse, body) {
+    fs.unlink(file);
+
+    if (err) {
+      return console.error('upload failed:', err);
+    }
+    console.log('Upload successful!  Server responded with:', body);
+  });
 }
-
-
-  function uploadFile(file, contentType) {
-    var request = require('request');
-    var path = require('path');
-    var fs = require('fs');
-
-    var filename = path.basename(file);
-
-    var target = 'http://10.33.2.244:3000/api/containers/test/upload' //TODO remplacer test par nom assos en var global
-
-    var formData = {
-      custom_file: {
-        value:  fs.createReadStream(file),
-        options: {
-          filename: filename,
-          contentType: contentType
-        }
-      }
-    };
-
-    request.post({url: target, formData: formData}, function optionalCallback(err, httpResponse, body) {
-      fs.unlink(file);
-
-      if (err) {
-        return console.error('upload failed:', err);
-      }
-      console.log('Upload successful!  Server responded with:', body);
-    });
-  }
