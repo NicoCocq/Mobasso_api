@@ -1,44 +1,77 @@
+module.exports = function(app) {
+  var formConfigRouter = app.loopback.Router();
+  var express = require('express');
+  app.use(express.static('public'));
+
+  //Go To Index/Login Page
+  /*
+  formConfigRouter.get('/', function (req, res) {
+    res.render('index.pug');
+  });*/
+
+  formConfigRouter.get('/test', function(req, res) {
+    register();
+    res.render('ok.pug');
+  });
+
+  app.use(formConfigRouter);
+};
+
+
 function register() {
+  var request = require('request');
+  /*
   const associationName = req.body.associationName;
   const email = req.body.email;
   const password = req.body.password;
-  const confirmPwd = req.body.confirmPwd;
+  const confirmPwd = req.body.confirmPwd;*/
+  const associationName = "La croix rouge";
+  const email = "lcr@gmail.com";
+  const password = "a";
+  const confirmPwd = "a";
 
   // Check value conformity
   if( associationName === undefined || email === undefined ||
       password === undefined ||confirmPwd === undefined ) {
     res.status(400).end();
+    console.log("Error : values are not conform.");
     return;
   }
 
-  if( !password.equals(confirmPwd) ) {
+  if( password !== confirmPwd ) {
     res.status(400).end();
+    console.log("Error : password and confirmation are different.");
     return;
   }
 
   // Register account using API
-  var formData = {
-    association_name: associationName,
-    email: email,
-    password: password
+  var options = {
+    uri: "http://localhost:3000/api/accounts",
+    method: 'POST',
+    json: {
+      association_name: associationName,
+      email: email,
+      password: password
+    }
   };
 
-  request.post({url: "localhost:3000/api/accounts", formData: formData}, function callback(err, httpResponse, body) {
-    if(err) {
+  request(options, function(err, httpResponse, body) {
+    if( err || httpResponse.statusCode !== 200 ) {
       return console.log('Error while creating account : ', err);
     }
 
     console.log('Account created !');
 
     // Remembers accountId for the next
-    var account = JSON.parse(body);
+    var account = body.valueOf();
 
-    // Create the association container using API
-    formData = {
-      name: account.id
+    options.json = {
+      name: account.id.toString()
     };
-    request.post({url: "localhost:3000/api/containers", formData: formData}, function callback(err, httpResponse, body) {
-      if(err) {
+    options.uri = "http://localhost:3000/api/containers";
+
+    request(options, function(err, httpResponse, body) {
+      if( err || httpResponse.statusCode !== 200 ) {
         return console.log('Error while creating the container : ', err);
       }
 
@@ -47,5 +80,27 @@ function register() {
       // Redirect to the next page
 
     });
+  });
+}
+
+
+function login() {
+  const email = req.body.email;
+  const password = req.body.pass;
+
+  if( email === undefined || password === undefined ) {
+    res.status(400).end();
+    return;
+  }
+
+  var formData = {
+    email: email,
+    password: password
+  };
+
+  request.get({url: "http://localhost:3000/api/account/login", formData: formData}, function callback(response) {
+    if( response.statusCode === 200 ) {
+      // C'est ok redirect
+    }
   });
 }
