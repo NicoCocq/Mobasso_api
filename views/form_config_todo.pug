@@ -1,0 +1,87 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Mobasso
+    // Bootstrap core CSS
+    link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    // Custom fonts for this template
+    link(href='vendor/fontawesome-free/css/all.min.css', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800', rel='stylesheet', type='text/css')
+    link(href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic', rel='stylesheet', type='text/css')
+    // Plugin CSS
+    link(href='vendor/magnific-popup/magnific-popup.css', rel='stylesheet')
+    // Custom styles for this template
+    link(href='css/creative.min.css', rel='stylesheet')
+    link(rel='stylesheet', type='text/css', href='../../Login_v2/Login_v2/css/util.css')
+    link(rel='stylesheet', type='text/css', href='../../Login_v2/Login_v2/css/main.css')
+  body#page-top
+    // Navigation
+    nav#mainNav.navbar.navbar-expand-lg.navbar-light.fixed-top
+      .container
+        a.navbar-brand.js-scroll-trigger(href='#page-top') Mobasso
+        button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          ul.navbar-nav.ml-auto
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#presentation') Presentation
+            li.nav-item
+              a.nav-link.js-scroll-trigger(href='#login') Login
+    header.masthead.text-center.text-white.d-flex
+      .container.my-auto
+        .row
+          .col-lg-10.mx-auto
+            h2.text-uppercase
+              strong Obtenez une application pour votre association facilement
+            hr
+          .col-lg-8.mx-auto
+            p.text-faded.mb-5
+            a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#login') Commencez
+    section.container-login100
+      .wrap-login100
+        form.login100-form.validate-form(method='POST' action='/' enctype='multipart/form-data')
+          .wrap-input100
+            label(for='title') Association name
+            input#title.input100(type='text', placeholder="Type the name of your association...", name='title')
+          .wrap-input100
+            label(for='description') Description
+            textarea#description.form-control(type='textarea', placeholder="Type the description of your association...", name='description')
+          .form-group
+            label(for='logo') Logo
+            input#logo.form-control(type='file' name='logo' accept="image/*")
+          .form-group
+            label(for='primaryColor') Primary Color :
+            input#primaryColor.form-control.col-3(type='color', name='primaryColor')
+          .wrap-input100
+            label(for='donation') Donation Link :
+            input#donation.form-control(type='url', placeholder="Type the donation link of your association...", name='donation')
+          .wrap-input100
+            label(for='facebook') Facebook :
+            input#facebook.form-control(type='url', placeholder="Type the facebook of your association...", name='facebook')
+          .wrap-input100
+            label(for='twitter') Twitter :
+            input#twitter.form-control(type='url', placeholder="Type the twitter of your association...", name='twitter')
+          .wrap-input100
+            label(for='instagram') Instagram :
+            input#instagram.form-control(type='url', placeholder="Type the instagram of your association...", name='instagram')
+          .wrap-input100
+            label(for='youtube') Youtube :
+            input#youtube.form-control(type='url', placeholder="Type the youtube of your association...", name='youtube')
+          .container-login100-form-btn
+            .wrap-login100-form-btn
+              .login100-form-bgbtn
+              button.login100-form-btn(type='submit')
+                | Submit
+    // Bootstrap core JavaScript
+    script(src='vendor/jquery/jquery.min.js')
+    script(src='vendor/bootstrap/js/bootstrap.bundle.min.js')
+    // Plugin JavaScript
+    script(src='vendor/jquery-easing/jquery.easing.min.js')
+    script(src='vendor/scrollreveal/scrollreveal.min.js')
+    script(src='vendor/magnific-popup/jquery.magnific-popup.min.js')
+    // Custom scripts for this template
+    script(src='js/creative.min.js')
