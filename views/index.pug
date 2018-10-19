@@ -31,6 +31,11 @@ html(lang='en')
               a.nav-link.js-scroll-trigger(href='#presentation') Presentation
             li.nav-item
               a.nav-link.js-scroll-trigger(href='#login') Connexion
+            li.nav-item
+              a#form.nav-link.js-scroll-trigger(href='form.html', style='display:none;') Formulaire
+            li.nav-item
+              a#deco.nav-link.js-scroll-trigger(href='#logout', style='display:none;') Déconnexion
+
     header.masthead.text-center.text-white.d-flex
       .container.my-auto
         .row
@@ -40,15 +45,19 @@ html(lang='en')
             hr
           .col-lg-8.mx-auto
             p.text-faded.mb-5
+              | Avec Mobasso, plus besoin de dépenser des sommes astronomiques pour développer une application
             a.btn.btn-primary.btn-xl.js-scroll-trigger(href='#login') Commencez
     section#presentation.bg-primary
       .container
         .row
           .col-lg-8.mx-auto.text-center
-            h2.section-heading.text-white We've got what you need!
+            h2.section-heading.text-white Un gain de temps et d'argent considérable !
             hr.light.my-4
             p.text-faded.mb-4
-              | Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!
+              | Mobasso vous fournit un template d'application pour votre association, parfaitement fonctionnel et modifiable à votre convenance !
+              br
+                | Il vous suffit de vous connecter et de remplir le formulaire avec les informations de votre association pour générer votre appli (fichier apk).
+
     section#login.container-login100
       .wrap-login100
         form.login100-form.validate-form(method='post', action='/')
