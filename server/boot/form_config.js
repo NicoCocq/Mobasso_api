@@ -68,6 +68,8 @@ module.exports = function(app) {
     var filename = file.destination + file.originalname;
     fs.renameSync(file.path, filename);
 
+    req.body.logo = file.originalname;
+
     var infos = JSON.stringify(req.body);
     var apkConfigFile = "apk_config.txt";
     fs.writeFileSync(apkConfigFile, infos, function(err) {
