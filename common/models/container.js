@@ -5,6 +5,7 @@ module.exports = function(Container) {
     var fs = require('fs');
 
     fs.writeFileSync("server/storage/" + req.params.container.toString() + "/apk_config.txt", JSON.stringify(req.body));
+    res.status(200).end();
   };
 
   Container.remoteMethod('saveConfig', {
