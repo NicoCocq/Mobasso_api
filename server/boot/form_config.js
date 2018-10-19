@@ -6,9 +6,7 @@ module.exports = function(app) {
   var multer = require('multer');
   var upload = multer({dest: 'uploads/'});
   var express = require('express');
-  //var session = require('express-session');
 
-  //app.use(session({secret:'AZERTY'}))
   app.use(express.static('public'));
 
   //GLOBAL VAR
@@ -35,7 +33,6 @@ module.exports = function(app) {
     //TODO Registing if ok form if nok index
     console.log("Test Registing");
     register(req, res);
-    //res.redirect('/formConfig');
   })
 
   //Get Form For Config App
@@ -81,6 +78,7 @@ module.exports = function(app) {
     uploadFile(filename, file.mimeType);
     uploadFile(apkConfigFile, 'text/plain');
 
+    //TODO GEnerate Script
     res.render('ok.pug');
   });
 
