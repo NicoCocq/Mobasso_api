@@ -35,7 +35,7 @@ module.exports = function(app) {
     //TODO Registing if ok form if nok index
     console.log("Test Registing");
     register(req, res);
-    res.redirect('/formConfig');
+    //res.redirect('/formConfig');
   })
 
   //Get Form For Config App
@@ -171,6 +171,9 @@ function register(req, res) {
     request(options, function(err, httpResponse, body) {
       if( err || httpResponse.statusCode !== 200 ) {
         return console.log('Error while creating the container : ', err);
+      }
+      else {
+        login(req, res);
       }
 
       console.log('Container created !');
