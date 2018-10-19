@@ -19,7 +19,6 @@ module.exports = function(app) {
 
   //Logging Function
   formConfigRouter.post('/', function (req, res) {
-    console.log("Test Logging");
     login(req, res);
   });
 
@@ -30,21 +29,17 @@ module.exports = function(app) {
 
   //Registing function
   formConfigRouter.post('/register', function(req, res) {
-    //TODO Registing if ok form if nok index
-    console.log("Test Registing");
     register(req, res);
   })
 
   //Get Form For Config App
   formConfigRouter.get('/formConfig', function (req, res) {
-    console.log("userId = " + ssn);
     res.render('form_config.pug');
   })
 
   //Add Configs in APK
   formConfigRouter.post('/formConfig', upload.single('logo'), function(req, res, next) {
 
-    console.log(ssn);
 
     const file = req.file;
     const title = req.body.title;
@@ -213,11 +208,7 @@ function login(req, res) {
     {
       var account = body.valueOf();
 
-      console.log(account);
-      console.log(account.userId);
-
       ssn = account.userId;
-      console.log(ssn);
       res.redirect('/formConfig');
     }
 
